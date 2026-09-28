@@ -23,7 +23,8 @@ if input_text:
         st.markdown(input_text)
 
     with st.spinner("Looking into that for you..."):
-        response = customer_support_logic.chat_with_agent(
+        # chat_with_agent returns (reply_text, agent_state); show only the text
+        response, _ = customer_support_logic.chat_with_agent(
             message_history=st.session_state.chat_history,
             new_text=input_text,
         )
